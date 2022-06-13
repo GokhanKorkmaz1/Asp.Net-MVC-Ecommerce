@@ -1,0 +1,20 @@
+﻿body {
+}
+
+#category-header {
+}
+
+.no-products {
+    display: block;
+    font-family: 'Proxima';
+    font-weight: 700;
+    font-size: .14rem;
+    color: #555;
+    line-height: 1.5em;
+    padding: .5rem;
+    text-align: center;
+}
+
+#address-area {
+    resize: none;
+}
