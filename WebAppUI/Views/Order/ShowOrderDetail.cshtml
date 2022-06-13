@@ -1,0 +1,31 @@
+﻿@model OrderDetailViewModel
+
+@{ 
+    Layout = "Customer_Layout";
+    ViewData["Title"] = "Order";
+}
+
+<table class="table table-striped table-dark">
+	<thead>
+        <tr class="text-center">
+            <td>Id</td>
+            <td>Product Id</td>
+            <td>Quantity</td>
+            <td>Price per Unite</td>
+            <td>Total Price</td>
+        </tr>
+	</thead>
+    <tbody>
+        @foreach (var orderDetail in Model.order)
+        {
+        <tr class="text-center">
+            <td>@orderDetail.Id</td>
+            <td>@orderDetail.ProductId</td>
+            <td>@orderDetail.Quantity</td>
+            <td>@orderDetail.Price</td>
+            <td>@orderDetail.TotalPrice</td>
+        </tr>
+        }
+    </tbody>
+</table>
+

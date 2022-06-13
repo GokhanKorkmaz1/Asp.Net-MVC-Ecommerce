@@ -1,0 +1,42 @@
+﻿@model OrderListViewModel
+
+@{
+    Layout = "Customer_Layout";
+    ViewData["Title"] = "Payment";
+
+}
+
+    @{
+        if (Model.orders.Count < 1)
+        {
+            <div style="margin:2em; padding:0.5em; border-radius:4px;" class="d-inline badge-danger no-products">You have not ordered yet</div>
+        }
+        else
+        {
+<table class="table table-striped table-dark">
+    <thead>
+        <tr class="text-center">
+            <td>Installment</td>
+            <td>Remaining Installment</td>
+            <td>Date of Purchase</td>
+            <td>State</td>
+            <td>Shipping Address</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var order in Model.orders)
+        {
+            <tr class="text-center">
+                <td>@order.Installment</td>
+                <td>@order.RemainingInstallment</td>
+                <td>@order.DateofPurchase</td>
+                <td>@order.State</td>
+                <td>@order.ShippingAddress</td>
+                <td><a class="btn btn-primary" asp-controller="Order" asp-action="Payment" asp-route-orderId="@order.Id">Pay</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+        }
+
+    }

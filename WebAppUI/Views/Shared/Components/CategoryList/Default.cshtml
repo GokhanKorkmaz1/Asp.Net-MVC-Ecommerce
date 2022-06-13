@@ -1,0 +1,17 @@
+﻿@model CategoryListViewModel
+
+@{
+
+}
+
+
+@foreach (var category in Model.Categories)
+{
+    <div class="col" id="category-header">
+        <h5>
+            <a class="text-decoration-none text-danger text-center text-capitalize " href="/product/index?category=@category.Id">@category.Name</a>
+        </h5>
+    </div>
+}
+
+

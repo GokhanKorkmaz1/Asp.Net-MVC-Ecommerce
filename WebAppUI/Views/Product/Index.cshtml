@@ -1,0 +1,34 @@
+﻿@model ProductListViewModel
+
+@{
+    ViewData["Title"] = "Products";
+    Layout = "_Layout";
+    int total = 0;
+}
+
+<table class="table table-responsive">
+    @foreach (var product in Model.Products)
+    {
+        if (total % 4 == 0)
+        {
+            @:<tr>
+            }
+
+            <td>
+                <div class="card" style="width: 15rem;height: 25rem;">
+                    <div class="card-body">
+                        <img class="card-img-top" src="@product.ImagePath" alt="Card image cap">
+                        <h5 class="card-title">@product.Producer @product.Model</h5>
+                        <p class="card-text">@product.Price TL</p>
+
+                    </div>
+                    <div class="card-footer"><a class="btn btn-sm btn-success text-md-right" asp-controller="Cart" asp-action="AddToCart" asp-route-productId="@product.Id">Add to Cart</a></div>
+                </div>
+            </td>
+            if (total + 1 % 5 == 0)
+            {
+            @:</tr>
+        }
+        total++;
+    }
+</table>

@@ -1,0 +1,43 @@
+﻿@model CustomerAddViewModel
+
+@{
+    Layout = "Customer_Layout";
+    ViewData["Title"] = "Customer";
+}
+<div class="col-4">
+</div>
+<div class="col-4" style="margin-top:2rem;">
+    <form asp-controller="Customer" asp-action="AccountSettings">
+        <div class="form-group">
+            <label asp-for="customer.PhoneNumber">Phone Number</label>
+            <input type="number" asp-for="customer.PhoneNumber" class="form-control" placeholder="Phone Number" />
+            <span asp-validation-for="customer.PhoneNumber"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="customer.Name">Name</label>
+            <input asp-for="customer.Name" class="form-control" placeholder="Name" />
+            <span asp-validation-for="customer.Name"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="customer.Surname">Surname</label>
+            <input asp-for="customer.Surname" class="form-control" placeholder="Surname" />
+            <span asp-validation-for="customer.Surname"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="customer.Mail">Mail</label>
+            <input type="email" asp-for="customer.Mail" class="form-control" placeholder="Mail" />
+            <span asp-validation-for="customer.Mail"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="customer.Address">Address</label>
+            <textarea id="address-area" cols="5" asp-for="customer.Address" class="form-control" placeholder="Address"></textarea>
+            <span asp-validation-for="customer.Address"></span>
+        </div>
+        <div style="margin-top: 1.5rem;">
+            <input type="submit" value="Save Changes" class="btn btn-group-lg btn-primary" />
+            <a style="margin-left:0.5rem;" asp-controller="Customer" asp-action="ChangePassword" formmethod="post" class="btn btn-group-lg btn-primary">Change Password</a>
+        </div>
+    </form>
+</div>
+<div class="col-4">
+</div>

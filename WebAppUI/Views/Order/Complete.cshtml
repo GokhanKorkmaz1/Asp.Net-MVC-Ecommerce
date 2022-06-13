@@ -1,0 +1,22 @@
+﻿@model OrderViewModel
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Order";
+}
+
+<form asp-controller="Order" asp-action="Complete">
+    <div class="form-group">
+        <label asp-for="@Model.order.Installment">Installment</label>
+        <input asp-for="@Model.order.Installment" class="form-control" placeholder="Installment" />
+        <span asp-validation-for="@Model.order.Installment"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.order.ShippingAddress">Shipping Address</label>
+        <textarea id="address-area" cols="5" asp-for="@Model.order.ShippingAddress" class="form-control" placeholder="Shipping Address"></textarea>
+        <span asp-validation-for="@Model.order.ShippingAddress"></span>
+    </div>
+
+    <input type="submit" value="Create" class="btn btn-group-lg btn-primary" />
+</form>
+

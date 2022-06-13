@@ -1,0 +1,40 @@
+﻿@model ProductListViewModel
+
+@{
+    ViewData["Title"] = "Products";
+    Layout = "Admin_Layout";
+    int total = 0;
+}
+
+<table class="table table-responsive">
+    @foreach (var product in Model.Products)
+    {
+        if (total % 4 == 0)
+        {
+            @:<tr>
+            }
+
+            <td>
+                <div class="card" style="width: 15rem;height: 25rem;">
+                    <div class="card-body">
+                        <img class="card-img-top" src="@product.ImagePath" alt="Card image cap">
+                        <h5 class="card-title">@product.Producer @product.Model</h5>
+                        <p class="card-text">@product.Price TL</p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col"><a class="btn btn-sm btn-primary text-md-right" asp-controller="Admin" asp-action="UpdateProduct" asp-route-productId="@product.Id">Update</a></div>
+                                <div class="col"><a class="btn btn-sm btn-danger text-md-right" asp-controller="Admin" asp-action="RemoveProduct" asp-route-productId="@product.Id">Remove</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            if (total + 1 % 5 == 0)
+            {
+            @:</tr>
+        }
+        total++;
+    }
+</table>

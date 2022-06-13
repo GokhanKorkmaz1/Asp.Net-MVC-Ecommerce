@@ -1,0 +1,41 @@
+﻿@model AddProductViewModel
+
+@{ 
+    Layout = "Admin_Layout";
+}
+
+<form asp-controller="Admin" asp-action="UpdateProduct">
+    <div class="form__field">
+        <label asp-for="product.CategoryId">Category Id</label>
+        <input type="number" asp-for="product.CategoryId" class="form-control" placeholder="1-8" />
+        <span asp-validation-for="product.CategoryId"></span>
+    </div>
+    <div class="form__field" style="margin-top:1rem;">
+        <label asp-for="product.Producer">Producer</label>
+        <input asp-for="product.Producer" class="form-control" placeholder="Producer" />
+        <span asp-validation-for="product.Producer"></span>
+    </div>
+    <div class="form__field" style="margin-top:1rem;">
+        <label asp-for="product.Model">Model</label>
+        <input asp-for="product.Model" class="form-control" placeholder="Model" />
+        <span asp-validation-for="product.Model"></span>
+    </div>
+    <div class="form__field" style="margin-top:1rem;">
+        <label asp-for="product.UnitinStock">Unit in Stock</label>
+        <input type="number" asp-for="product.UnitinStock" class="form-control" placeholder="Unit in Stock" />
+        <span asp-validation-for="product.UnitinStock"></span>
+    </div>
+    <div class="form__field" style="margin-top:1rem;">
+        <label asp-for="product.Price">Price</label>
+        <input type="number" step="0.001" asp-for="product.Price" class="form-control" placeholder="Price" />
+        <span asp-validation-for="product.Price"></span>
+    </div>
+    <div class="form__field" style="margin-top:1rem;">
+        <label asp-for="product.ImagePath">Image Url</label>
+        <input type="url" asp-for="product.ImagePath" class="form-control" placeholder="Image Url" />
+        <span asp-validation-for="product.ImagePath"></span>
+    </div>
+    <div class="form__field" style="margin-top:1rem;">
+        <input type="submit" value="Update" class="btn btn-group-lg btn-primary" />
+    </div>
+</form>

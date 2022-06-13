@@ -1,0 +1,55 @@
+﻿@model CartListViewModel
+
+@{ 
+    Layout = "Customer_Layout";
+    ViewData["Title"] = "Cart";
+}
+
+@if (Model.Cart.CartLines.Count == 0)
+{
+    <div style="margin:2em; padding:0.5em; border-radius:4px;" class="badge-danger no-products">Your cart is empty</div>
+}
+else
+{<div>
+    <br />
+    @{ 
+        var total = 0.0;
+    }
+    <table>
+        <thead>
+            <tr class="text-dark">
+                <td >#</td>
+                <td style="text-align: center; width: 7rem;">Producer</td>
+                <td style="text-align: center; width: 7rem;">Model</td>
+                <td style="text-align: center; width: 7rem;">Quantity</td>
+                <td style="text-align: center; width: 7rem;">Price</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var cartline in Model.Cart.CartLines)
+            {
+
+                var subTotal = cartline.Quantity * cartline.Product.Price;
+                total += subTotal;
+            <tr>
+                <td><img class="img-fluid w-25" src="@cartline.Product.ImagePath" alt="Card image cap"></td>
+                <td style="text-align: center; width: 7rem;">@cartline.Product.Producer</td>
+                <td style="text-align: center; width: 7rem;">@cartline.Product.Model</td>
+                <td style="text-align: center; width: 7rem;">@cartline.Quantity</td>
+                <td style="text-align: center; width: 7rem;">@String.Format("{0:,0.000}", subTotal) TL</td>
+                <td><a class="btn btn-sm btn-success" asp-controller="Cart" asp-action="Increase" asp-route-productId="@cartline.Product.Id" style="min-width:4em;min-height:2em;">+</a></td>
+                <td><a class="btn btn-sm btn-danger" asp-controller="Cart" asp-action="RemoveFromCart" asp-route-productId="@cartline.Product.Id" style="min-width:4em;min-height:2em;">-</a></td>
+            </tr>
+            }
+        </tbody>
+    </table>
+    <div style="position: absolute; right: 335px; " class="text-dark">Total : @String.Format("{0:,0.000}", total) TL</div>
+</div>
+ <div class="d-md-block" style="padding:1rem;">
+     <form class="align-items-center" asp-controller="Order" asp-action="Complete" method="get">
+         <input type="submit" value="Order" class="btn btn-group-lg btn-primary" />
+     </form>
+ </div>
+    
+}
+
